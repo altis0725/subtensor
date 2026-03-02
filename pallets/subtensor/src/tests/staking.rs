@@ -140,13 +140,13 @@ fn test_add_stake_event_has_origin() {
         let events = System::events();
         let stake_added = events.iter().find_map(|record| {
             if let RuntimeEvent::SubtensorModule(Event::StakeAdded(
-                origin,
                 coldkey,
                 hotkey,
                 _tao,
                 _alpha,
                 ev_netuid,
                 _fee,
+                origin,
             )) = &record.event
             {
                 Some((
@@ -214,13 +214,13 @@ fn test_remove_stake_event_has_origin() {
         let events = System::events();
         let stake_removed = events.iter().find_map(|record| {
             if let RuntimeEvent::SubtensorModule(Event::StakeRemoved(
-                origin,
                 coldkey,
                 _hotkey,
                 _tao,
                 _alpha,
                 ev_netuid,
                 _fee,
+                origin,
             )) = &record.event
             {
                 Some((origin.clone(), coldkey.clone(), *ev_netuid))

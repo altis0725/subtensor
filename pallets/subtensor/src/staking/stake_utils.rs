@@ -734,13 +734,13 @@ impl<T: Config> Pallet<T> {
 
         // Deposit and log the unstaking event.
         Self::deposit_event(Event::StakeRemoved(
-            origin.clone(),
             coldkey.clone(),
             hotkey.clone(),
             swap_result.amount_paid_out.into(),
             actual_alpha_decrease,
             netuid,
             swap_result.fee_paid.to_u64(),
+            origin.clone(),
         ));
 
         log::debug!(
@@ -826,13 +826,13 @@ impl<T: Config> Pallet<T> {
 
         // Deposit and log the staking event.
         Self::deposit_event(Event::StakeAdded(
-            origin.clone(),
             coldkey.clone(),
             hotkey.clone(),
             tao,
             swap_result.amount_paid_out.into(),
             netuid,
             swap_result.fee_paid.to_u64(),
+            origin.clone(),
         ));
 
         log::debug!(
@@ -923,22 +923,22 @@ impl<T: Config> Pallet<T> {
 
         // Deposit and log the unstaking event.
         Self::deposit_event(Event::StakeRemoved(
-            origin.clone(),
             origin_coldkey.clone(),
             origin_hotkey.clone(),
             tao_equivalent,
             actual_alpha_decrease,
             netuid,
             0_u64, // 0 fee
+            origin.clone(),
         ));
         Self::deposit_event(Event::StakeAdded(
-            origin.clone(),
             destination_coldkey.clone(),
             destination_hotkey.clone(),
             tao_equivalent,
             actual_alpha_moved,
             netuid,
             0_u64, // 0 fee
+            origin.clone(),
         ));
 
         Ok(tao_equivalent)

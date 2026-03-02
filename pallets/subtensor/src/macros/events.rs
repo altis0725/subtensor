@@ -16,28 +16,28 @@ mod events {
         /// Stake has been transferred from a coldkey account onto the hotkey staking account.
         /// The origin is the account on behalf of which the staking operation was performed
         /// (coldkey for extrinsic calls, lease coldkey for automated distributions).
-        /// (origin, coldkey, hotkey, tao_amount, alpha_amount, netuid, fee)
+        /// (coldkey, hotkey, tao_amount, alpha_amount, netuid, fee, origin)
         StakeAdded(
-            T::AccountId,
             T::AccountId,
             T::AccountId,
             TaoCurrency,
             AlphaCurrency,
             NetUid,
             u64,
+            T::AccountId,
         ),
         /// Stake has been removed from the hotkey staking account onto the coldkey account.
         /// The origin is the account on behalf of which the unstaking operation was performed
         /// (coldkey for extrinsic calls, lease coldkey for automated distributions).
-        /// (origin, coldkey, hotkey, tao_amount, alpha_amount, netuid, fee)
+        /// (coldkey, hotkey, tao_amount, alpha_amount, netuid, fee, origin)
         StakeRemoved(
-            T::AccountId,
             T::AccountId,
             T::AccountId,
             TaoCurrency,
             AlphaCurrency,
             NetUid,
             u64,
+            T::AccountId,
         ),
         /// stake has been moved from origin (hotkey, subnet ID) to destination (hotkey, subnet ID) of this amount (in TAO).
         StakeMoved(

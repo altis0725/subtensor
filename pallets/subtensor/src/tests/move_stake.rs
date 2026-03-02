@@ -657,7 +657,7 @@ fn test_do_move_event_emission() {
         let events = System::events();
         let stake_removed = events.iter().find_map(|record| {
             if let RuntimeEvent::SubtensorModule(Event::StakeRemoved(
-                origin, _, _, _, _, _, _,
+                _, _, _, _, _, _, origin,
             )) = &record.event
             {
                 Some(origin.clone())
@@ -670,7 +670,7 @@ fn test_do_move_event_emission() {
 
         let stake_added = events.iter().find_map(|record| {
             if let RuntimeEvent::SubtensorModule(Event::StakeAdded(
-                origin, _, _, _, _, _, _,
+                _, _, _, _, _, _, origin,
             )) = &record.event
             {
                 Some(origin.clone())
